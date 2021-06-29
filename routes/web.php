@@ -14,4 +14,14 @@ use App\Http\Controllers\Admin\ControllerCidades;
 |
 */
 
-Route::get('/',  [ControllerCidades::class, 'cidades']);
+Route::redirect('/', '/admin/cidades',);
+
+
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('cidades',  [ControllerCidades::class, 'cidades'])->name('cidades.listar');
+    Route::get('cidades/salvar',  [ControllerCidades::class, 'formAdicionar'])->name('cidades.form');
+    Route::post('cidades/salvar',  [ControllerCidades::class, 'adicionar'])->name('cidades.adicionar');
+});
