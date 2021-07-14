@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ControllerCidades;
+use App\Http\Controllers\Admin\ControllerCars;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use App\Http\Controllers\Admin\ControllerCidades;
 |
 */
 
-Route::redirect('/', '/admin/cidades',);
+Route::redirect('/', '/admin/cars',);
 
 
 
@@ -24,4 +25,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('cidades',  [ControllerCidades::class, 'cidades'])->name('cidades.listar');
     Route::get('cidades/salvar',  [ControllerCidades::class, 'formAdicionar'])->name('cidades.form');
     Route::post('cidades/salvar',  [ControllerCidades::class, 'adicionar'])->name('cidades.adicionar');
+
+    Route::get('cars',  [ControllerCars::class, 'cars'])->name('cars.listar');
+    Route::get('cars/salvar',  [ControllerCars::class, 'formAdicionar'])->name('cars.form');
+    Route::post('cars/salvar',  [ControllerCars::class, 'adicionar'])->name('cars.adicionar');
 });

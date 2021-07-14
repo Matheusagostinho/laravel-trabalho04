@@ -16,16 +16,16 @@
         }
     </style>
 
-    <title>Encontra Aqui</title>
+    <title>AlugaAqui</title>
 </head>
 
 <body>
     <nav class=" orange darken-4">
         <div class="container">
-            <a href="/" class="brand-logo"> Encontra Aqui</a>
+            <a href="/" class="brand-logo">AlugaAqui- Aluguel de Carros</a>
             <ul class="right">
-                <li><a href="#" class=""> Cidades</a> </li>
-                <li><a href="#" class=""> Serviços</a></li>
+                <li><a href="#" class=""> Carros</a> </li>
+                <li><a href="#" class=""> Marcas</a></li>
 
             </ul>
         </div>
