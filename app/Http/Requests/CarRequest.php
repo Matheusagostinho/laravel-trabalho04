@@ -24,8 +24,12 @@ class CarRequest extends FormRequest
     public function rules()
     {
         return [
-            'model' => 'bail|required|min:3|max:100',
-            'year' => 'bail|required|min:4|max:4'
+            'model' => "bail|required|min:3|max:100",
+            'year' => 'bail|required|min:4|max:4',
+            'average' => 'bail',
+            'feature' => 'bail',
+            'owner_id' => 'bail',
+            'daily' => "bail|required|"
         ];
     }
 }

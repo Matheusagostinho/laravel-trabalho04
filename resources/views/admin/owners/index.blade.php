@@ -3,39 +3,31 @@
 @section('conteudo-principal')
 
 <section class="section">
-    <table class="highlight responsive-table">
+    <table class="highlight">
         <thead>
             <tr>
-                <th>Modelo</th>
-                <th>Ano</th>
-                <th>Tipo</th>
-                <th>Valor da Diaria</th>
-                <th>Propietário</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Cidade</th>
                 <th class="right-align">Opções</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($cars as $car)
+            @forelse ($owners as $owner)
             <tr>
-
-                <td style="width:20%; font-weight:bold; font-size:1.3rem;">
-                    <a href="{{ route('admin.cars.show', $car->id) }}" class="orange-text text- darken-4"
-                        style=" margin-left:5px; cursor: pointer; width:100%; display:block; font-weight:bold;"><strong>{{$car->model}}</strong></a>
-                </td>
-
-                <td>{{$car->year}}</td>
-                <td>{{$car->brand->name}}</td>
-                <td>{{$car->daily}}</td>
-                <td>{{$car->owner->name}}</td>
+                <td>{{$owner->name}}</td>
+                <td>{{$owner->phone}}</td>
+                <td>{{$owner->cidade->name}}</td>
                 <td class="right-align">
-                    <a href="{{route('admin.cars.edit', $car->id)}}">
+                    <a href="{{route('admin.owners.edit', $owner->id)}}">
                         <button type="submit" style="border:0; background:transparent; cursor: pointer; ">
                             <span>
                                 <i class="material-icons blue-text text-accent-3">edit</i>
                             </span>
                         </button>
                     </a>
-                    <form action="{{ route('admin.cars.destroy', $car->id) }}" method="POST" style="display: inline;">
+                    <form action="{{ route('admin.owners.destroy', $owner->id) }}" method="POST"
+                        style="display: inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" style="border:0; background:transparent; cursor: pointer; ">
@@ -49,13 +41,13 @@
             </tr>
             @empty
             <tr>
-                <td colspan="2">Não possui Veículos Cadastrados!</td>
+                <td colspan="2">Não possui Proprietários Cadastrados!</td>
             </tr>
             @endforelse
         </tbody>
     </table>
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light" href="{{route('admin.cars.create')}}">
+        <a class="btn-floating btn-large waves-effect waves-light" href="{{route('admin.owners.create')}}">
             <i class="large material-icons">add</i>
         </a>
     </div>

@@ -22,11 +22,10 @@
 <body>
     <nav class=" orange darken-4">
         <div class="container">
-            <a href="/" class="brand-logo">AlugaAqui- Aluguel de Carros</a>
+            <a href="/" class="brand-logo">AlugaAqui- Aluguel de Veículos</a>
             <ul class="right">
-                <li><a href="#" class=""> Carros</a> </li>
-                <li><a href="#" class=""> Marcas</a></li>
-
+                <li><a href="{{route('admin.cars.index')}}" class=""> Veículos</a> </li>
+                <li><a href="{{route('admin.owners.index')}}" class=""> Propietários</a></li>
             </ul>
         </div>
     </nav>
@@ -38,12 +37,26 @@
         @yield('conteudo-principal')
     </div>
     <!-- Compiled and minified JavaScript -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         @if (session('sucesso'))
 
              M.toast({html: "{{session('sucesso')}}",  classes: 'rounded'});
         @endif
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, options);
+        });
+
+
+
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
     </script>
 </body>
 
