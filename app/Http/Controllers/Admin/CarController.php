@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CarRequest;
 use App\Models\Brand;
 use App\Models\Car;
+use App\Models\Cidade;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 
@@ -16,14 +17,29 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $subtitulo = "Lista de Veículos";
 
-        $cars = Car::all();
+        $cars = Car::orderBy('model', 'asc');
+
+        $model = $request->model;
+        $brand_id = $request->brand_id;
+
+        if ($brand_id) {
+            $cars->where('brand_id',  $brand_id);
+        }
+
+        if ($model) {
+            $cars->where('model', 'like', "%$model%");
+        }
+
+        $cars = $cars->get();
+
+        $brands = Brand::orderBy('name')->get();
 
 
-        return view('admin.cars.index', compact('subtitulo', 'cars'));
+        return view('admin.cars.index', compact('subtitulo', 'cars', "brands", "brand_id", "model"));
     }
 
     /**

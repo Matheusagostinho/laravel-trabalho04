@@ -23,10 +23,10 @@
 <body>
     <nav class=" orange darken-4">
         <div class="container">
-            <a href="/" class="brand-logo">AlugaAqui- Aluguel de Veículos</a>
+            <a href="/" class="brand-logo center">AlugaAqui- Aluguel de Veículos</a>
             <ul class="right">
-                <li><a href="{{route('admin.cars.index')}}" class=""> Veículos</a> </li>
-                <li><a href="{{route('admin.owners.index')}}" class=""> Propietários</a></li>
+                <li><a href="{{route('admin.cars.index')}}" class=""> Login - Admin</a> </li>
+                {{-- <li><a href="{{route('admin.owners.index')}}" class=""> Criar Conta</a></li> --}}
             </ul>
         </div>
     </nav>

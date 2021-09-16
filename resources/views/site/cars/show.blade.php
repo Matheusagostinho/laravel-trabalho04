@@ -1,4 +1,4 @@
-@extends('admin.layouts.principal')
+@extends('site.layouts.principal')
 
 @section('conteudo-principal')
 
@@ -50,8 +50,8 @@
 
 
     <div class="right col s12" style="margin-top:2rem; margin-bottom:2rem;">
-        <a href="{{route('admin.cars.index')}}" class="btn-flat waves-effect">Voltar</a>
-        <a href="{{ route('admin.cars.edit', $car->id) }}" class="btn waves-effect">Editar</a>
+        <a href="{{route('cars.index')}}" class="btn-flat waves-effect">Voltar</a>
+
 
     </div>
 

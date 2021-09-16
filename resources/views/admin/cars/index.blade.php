@@ -3,6 +3,35 @@
 @section('conteudo-principal')
 
 <section class="section">
+
+    <form action="{{route('admin.cars.index')}}" method="GET">
+        <div class="row valign-wrapper">
+            <div class=" col s6">
+                <label for="brand_id">Tipo do Veiculo</label>
+                <select name="brand_id" id="brand_id" class="browser-default">
+                    <option value={{old('brand_id', $brand_id  ?? '')}}>
+                        {{ old($car->brand->name ?? 'Selecione o tipo do Veículo', $car->brand->name  ??  'Selecione o tipo do Veículo')}}
+                    </option>
+                    @foreach ($brands as $brand)
+                    <option value="{{$brand->id}}" {{$brand->id == $brand_id ? 'selected': ''}}> {{$brand->name}}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="input-field col s6">
+                <input type="text" name="model" id="model" value="{{$model}}" />
+                <label for="model">Modelo do Véiculo</label>
+            </div>
+        </div>
+        <div class="row right-align">
+            <button class="btn waves-effect waves-light" type="submit">Pesquisar</button>
+            <a href="{{route('admin.cars.index')}}" class="btn-flat waves-effect">Exibir todos</a>
+
+        </div>
+    </form>
+</section>
+<hr />
+<section class="section">
     <table class="highlight responsive-table">
         <thead>
             <tr>
@@ -28,6 +57,13 @@
                 <td>{{$car->daily}}</td>
                 <td>{{$car->owner->name}}</td>
                 <td class="right-align">
+                    <a href="{{route('admin.cars.fotos.index', $car->id)}}" title="fotos">
+                        <button type="submit" style="border:0; background:transparent; cursor: pointer; ">
+                            <span>
+                                <i class="material-icons green-text text-lighten-1">insert_photo</i>
+                            </span>
+                        </button>
+                    </a>
                     <a href="{{route('admin.cars.edit', $car->id)}}">
                         <button type="submit" style="border:0; background:transparent; cursor: pointer; ">
                             <span>
@@ -49,7 +85,7 @@
             </tr>
             @empty
             <tr>
-                <td colspan="2">Não possui Veículos Cadastrados!</td>
+                <td colspan="2">Não possui Veículos Cadastrados ou que atendem os critérios de pesquisa!</td>
             </tr>
             @endforelse
         </tbody>
